@@ -17,6 +17,8 @@
     --cream:#EFE3CC;
     --cream-dim:#C9BC9F;
     --gold:#D9A441;
+    --enamel:#EAF2F2;
+    --enamel-blue:#3E7387;
     --line: rgba(239,227,204,0.14);
   }
   *{box-sizing:border-box;}
@@ -32,6 +34,19 @@
     *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
   }
   a{color:inherit;}
+  .flag-line{
+    height:4px;
+    background:linear-gradient(90deg, #CE1126 0 33%, #FCD116 33% 66%, #006B3F 66% 100%);
+  }
+  .speckle{
+    background-image:
+      radial-gradient(circle at 18% 28%, rgba(62,115,135,0.4) 1.4px, transparent 1.6px),
+      radial-gradient(circle at 68% 62%, rgba(62,115,135,0.35) 1.4px, transparent 1.6px),
+      radial-gradient(circle at 38% 82%, rgba(62,115,135,0.3) 1.4px, transparent 1.6px),
+      radial-gradient(circle at 86% 18%, rgba(62,115,135,0.35) 1.4px, transparent 1.6px),
+      radial-gradient(circle at 8% 65%, rgba(62,115,135,0.28) 1.4px, transparent 1.6px);
+    background-size:44px 44px;
+  }
   .label{
     font-family:'Space Mono', monospace;
     text-transform:uppercase;
@@ -223,11 +238,14 @@
   .about-grid p{color:var(--cream-dim); line-height:1.75; margin:0 0 16px;}
   .about-grid strong{color:var(--cream);}
   .pot{
-    border:1px solid var(--line);
+    border:1px solid var(--enamel-blue);
     border-radius:6px;
     padding:22px;
-    background:var(--night-2);
+    background-color:var(--night-2);
   }
+  .pot.speckle{ background-blend-mode:screen; }
+  .pot-head{ display:flex; align-items:center; gap:12px; margin-bottom:10px; }
+  .pot-head .label{ margin-bottom:0; }
   .pot .label{margin-bottom:10px;}
   .pot ul{margin:0; padding-left:18px; color:var(--cream-dim); line-height:1.9;}
 
@@ -242,18 +260,17 @@
   .menu-base .name{font-family:'Alfa Slab One', serif; font-size:20px; color:var(--cream);}
   .menu-base .desc{color:var(--cream-dim); margin-top:6px; font-size:14.5px; line-height:1.6;}
   .addons{
-    display:grid; grid-template-columns:repeat(auto-fill, minmax(150px,1fr));
-    gap:1px;
-    background:var(--line);
-    border:1px solid var(--line);
-    border-radius:6px;
-    overflow:hidden;
+    display:flex; flex-wrap:wrap; gap:10px;
   }
   .addon{
-    background:var(--night);
-    padding:16px;
+    background-color:var(--night-2);
+    border:1.5px solid var(--enamel-blue);
+    border-radius:999px;
+    padding:9px 18px;
+    transition:transform .15s, border-color .2s;
   }
-  .addon .aname{font-weight:600; font-size:14.5px; color:var(--cream);}
+  .addon:hover{ transform:translateY(-2px); border-color:var(--gold); }
+  .addon .aname{font-weight:600; font-size:14px; color:var(--cream);}
   .addon .aprice{
     font-family:'Space Mono', monospace;
     font-size:13px;
@@ -305,6 +322,7 @@
 </head>
 <body>
 
+<div class="flag-line"></div>
 <nav>
   <div class="wrap">
     <div class="brand">DANQUAH CIRCLE<br>AHUMA<span>AKYE</span></div>
@@ -354,8 +372,27 @@
       <p>There's <strong>no seating rush and no closing time worry</strong>: the coal pot stays lit from just after midnight until the sun's fully up, which makes it the reliable stop after a night shift, a night out, or a night that just won't end.</p>
       <p>Expect a queue of taxi drivers, off-duty officers, and students from the hostels nearby — the great equalizer of Accra's night crowd.</p>
     </div>
-    <div class="pot">
-      <div class="label">What makes it waakye</div>
+    <div class="pot speckle">
+      <div class="pot-head">
+        <svg width="52" height="42" viewBox="0 0 120 95" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M8 40 C8 40 8 60 60 60 C112 60 112 40 112 40 L104 78 C104 84 90 88 60 88 C30 88 16 84 16 78 Z" fill="#EAF2F2"/>
+          <ellipse cx="60" cy="40" rx="52" ry="14" fill="#EAF2F2" stroke="#3E7387" stroke-width="3"/>
+          <circle cx="30" cy="36" r="2" fill="#3E7387"/>
+          <circle cx="85" cy="34" r="1.6" fill="#3E7387"/>
+          <circle cx="60" cy="28" r="1.8" fill="#3E7387"/>
+          <circle cx="45" cy="46" r="1.4" fill="#3E7387"/>
+          <circle cx="75" cy="47" r="1.6" fill="#3E7387"/>
+          <ellipse cx="60" cy="38" rx="38" ry="9" fill="#8B3A2B"/>
+          <circle cx="50" cy="36" r="2" fill="#5C6B3F"/>
+          <circle cx="68" cy="35" r="1.8" fill="#2B1810"/>
+          <circle cx="58" cy="40" r="1.6" fill="#2B1810"/>
+          <circle cx="74" cy="39" r="1.8" fill="#5C6B3F"/>
+          <circle cx="44" cy="41" r="1.6" fill="#2B1810"/>
+          <ellipse cx="78" cy="34" rx="9" ry="7" fill="#F1E7D6"/>
+          <circle cx="78" cy="34" r="3.2" fill="#D9A441"/>
+        </svg>
+        <div class="label">What makes it waakye</div>
+      </div>
       <ul>
         <li>Rice and beans boiled together with dried millet leaves (<em>ahaebankye</em>) for that signature brown-red colour</li>
         <li>Served with a spoon of shito, never skimped</li>
@@ -380,17 +417,17 @@
     </div>
 
     <div class="addons">
-      <div class="addon"><div class="aname">Gari</div><div class="aprice">add-on</div></div>
-      <div class="addon"><div class="aname">Spaghetti</div><div class="aprice">add-on</div></div>
-      <div class="addon"><div class="aname">Salad</div><div class="aprice">add-on</div></div>
-      <div class="addon"><div class="aname">Fish</div><div class="aprice">add-on</div></div>
-      <div class="addon"><div class="aname">Meat</div><div class="aprice">add-on</div></div>
-      <div class="addon"><div class="aname">Wele</div><div class="aprice">add-on</div></div>
-      <div class="addon"><div class="aname">Egg</div><div class="aprice">add-on</div></div>
-      <div class="addon"><div class="aname">Plantain</div><div class="aprice">add-on</div></div>
-      <div class="addon"><div class="aname">Sausage</div><div class="aprice">add-on</div></div>
-      <div class="addon"><div class="aname">Chicken</div><div class="aprice">add-on</div></div>
-      <div class="addon"><div class="aname">Towel</div><div class="aprice">add-on</div></div>
+      <div class="addon"><span class="aname">Gari</span></div>
+      <div class="addon"><span class="aname">Spaghetti</span></div>
+      <div class="addon"><span class="aname">Salad</span></div>
+      <div class="addon"><span class="aname">Fish</span></div>
+      <div class="addon"><span class="aname">Meat</span></div>
+      <div class="addon"><span class="aname">Wele</span></div>
+      <div class="addon"><span class="aname">Egg</span></div>
+      <div class="addon"><span class="aname">Plantain</span></div>
+      <div class="addon"><span class="aname">Sausage</span></div>
+      <div class="addon"><span class="aname">Chicken</span></div>
+      <div class="addon"><span class="aname">Towel</span></div>
     </div>
     <div class="menu-note">* Prices depend on portion — confirm on WhatsApp when you order.</div>
   </div>
